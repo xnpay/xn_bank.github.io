@@ -57,7 +57,7 @@ public class JavaDemo {
 
         //链接跳转形式, 域名请联系客服
         //host + /#/create?amount=100&merchantNo=20200113185052721173545318&notifyUrl=baidu.com&orderNo=1582342812127&payMode=ebank&returnUrl=baidu.com&ts=1582342812&sign=126a8a129faff7d71a1e2208f5c938fb
-        String s = "网关地址+/pass-sign/#/create?" + signReduce + "&sign=" + sign;
+        String s = "网关地址+/pass-order/#/create?" + signReduce + "&sign=" + sign;
         System.out.println(s);
     }
 
