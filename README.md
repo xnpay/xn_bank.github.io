@@ -1,6 +1,6 @@
-# k-hero 接口文档(v.200612)
+# xn_bank 接口文档(v.200615)
 =
-文档内容最后更新于：2020-06-12
+文档内容最后更新于：2020-06-15
 
 <span style="color:red !important;"> 特别注意：</span>
 -
@@ -47,15 +47,15 @@ amount=100&merchantNo=20200113185052721173545318&notifyUrl=https%3A%2F%2Fwww.bai
 2.DigestUtils.md5Hex(originalStr + "key=" + apiKey) <br>
 i.用DigestUtils.md5Hex算法将“originalStr + "key=" + apiKey”进行加密得到签名信息
 
-3.[c# demo](https://github.com/k-hero/k-hero/tree/master/C%23-demo)
+3.[c# demo](https://github.com/xnpay/xn_bank.github.io/tree/master/C%23-demo)
 
-4.[java demo](https://github.com/k-hero/k-hero/passpay/tree/master/java)
+4.[java demo](https://github.com/xnpay/xn_bank.github.io/tree/master/java)
 
-5.[php demo](https://github.com/k-hero/k-hero/passpay/tree/master/php)
+5.[php demo](https://github.com/xnpay/xn_bank.github.io/tree/master/php)
 
 同步通知 （returnUrl）
 -
-当创建订单时传入返回地址，订单结束后，用户点击“返回商户”，会在返回链接带上参数（returnUrl?urlparams）。参数内容参考[统一返回参数](https://github.com/k-hero/k-hero/#%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E%E5%8F%82%E6%95%B0)，可通过签名算法计算签名的正确性。例：<br>
+当创建订单时传入返回地址，订单结束后，用户点击“返回商户”，会在返回链接带上参数（returnUrl?urlparams）。参数内容参考[统一返回参数](https://github.com/xnpay/xn_bank.github.io/#%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E%E5%8F%82%E6%95%B0)，可通过签名算法计算签名的正确性。例：<br>
 returnUrl?<br>
 
     "amount":100,
@@ -84,7 +84,7 @@ returnUrl?<br>
     
  异步回调 （notifyUrl）
  -
-当创建订单时传入异步回调地址时，订单结束后（用户取消订单(-30)、用户支付超时（-40）、订单失败（-50）、订单已完成（50））进行通知，总共通知3次，间隔时间分别为0s,15s,60s，超时时间为10s，处理成功后返回 success，返回其他字符表示处理失败，会继续进行后续通知。通知内容参考[统一返回参数](https://github.com/passpay/passpay/#%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E%E5%8F%82%E6%95%B0)，可通过签名算法计算签名的正确性 例：<br>
+当创建订单时传入异步回调地址时，订单结束后（用户取消订单(-30)、用户支付超时（-40）、订单失败（-50）、订单已完成（50））进行通知，总共通知3次，间隔时间分别为0s,15s,60s，超时时间为10s，处理成功后返回 success，返回其他字符表示处理失败，会继续进行后续通知。通知内容参考[统一返回参数](https://github.com/xnpay/xn_bank.github.io/#%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E%E5%8F%82%E6%95%B0)，可通过签名算法计算签名的正确性 例：<br>
 curl -X POST "回调地址"<br>
   -H 'content-type: application/json' <br>
   -d '{<br>
@@ -121,7 +121,7 @@ curl -X POST "回调地址"<br>
 
 i.使用场景：当商户创建时，根据下面参数，生成订单信息。<br>
 ii.请求方式：页面跳转 <br>
-iii.请求地址：网关地址+/pk-order/#/create?urlparams  <br>
+iii.请求地址：网关地址+/pass-order/#/create?urlparams  <br>
 iv.请求参数
 
 参数名称  | 必须  | 数据类型 | 示例| 参数说明
@@ -140,7 +140,7 @@ iv.请求参数
 i.使用场景：查询订单信息。<br>
 ii.请求方式：POST<br>
 iii.Content-Type：application/json<br>
-iv.请求地址：网关地址+ /cat-pay/open/order/query  <br>
+iv.请求地址：网关地址+ /pass-pay/open/order/query  <br>
 v.请求参数
 
 参数名称  | 必须  | 数据类型 | 示例| 参数说明
@@ -200,7 +200,7 @@ v.请求参数
 
 i.使用场景：商户银行卡下发<br>
 ii.请求方式：POST <br>
-iii.请求地址：网关地址+/cat-pay/open/order/issue-create  <br>
+iii.请求地址：网关地址+/pass-pay/open/order/issue-create  <br>
 iv.Content-Type：application/json  <br>
 v.请求参数
 
@@ -216,13 +216,13 @@ v.请求参数
  ts  | 是 | 整数 | 1581397518 | 商户订单时间戳（秒级）
  sign  | 是 | 字符串 | $2a$10$GLvMhH7Vr9zSP7CRE... | 参数签名，请按照签名算法生成
  
-vi. 响应:参考[响应内容](https://github.com/passpay/passpay/#%E5%93%8D%E5%BA%94%E5%86%85%E5%AE%B9)
+vi. 响应:参考[响应内容](github.com/xnpay/xn_bank.github.io/#%E5%93%8D%E5%BA%94%E5%86%85%E5%AE%B9)
 
 1.下发查询
 
 i.使用场景：商户银行卡下发查询<br>
 ii.请求方式：POST <br>
-iii.请求地址：网关地址+/cat-pay/open/order/issue-query  <br>
+iii.请求地址：网关地址+/pass-pay/open/order/issue-query  <br>
 iv.Content-Type：application/json  <br>
 v.请求参数
 
@@ -234,14 +234,14 @@ v.请求参数
  ts  | 是 | 整数 | 1581397518 | 商户订单时间戳（秒级）
  sign  | 是 | 字符串 | $2a$10$GLvMhH7Vr9zSP7CRE... | 参数签名，请按照签名算法生成
 
-vi. 响应:参考[响应内容](https://github.com/passpay/passpay/#%E5%93%8D%E5%BA%94%E5%86%85%E5%AE%B9)
+vi. 响应:参考[响应内容](https://github.com/xnpay/xn_bank.github.io/#%E5%93%8D%E5%BA%94%E5%86%85%E5%AE%B9)
 
 
 1.商户下发查询余额
 
 i.使用场景：商户下发查询余额<br>
 ii.请求方式：POST <br>
-iii.请求地址：网关地址+/cat-pay/open/order/issue-balance  <br>
+iii.请求地址：网关地址+/pass-pay/open/order/issue-balance  <br>
 iv.Content-Type：application/json  <br>
 v.请求参数
 
