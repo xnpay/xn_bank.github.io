@@ -26,7 +26,7 @@ echo "sign:".$sign;
 $array['sign']=$sign;
 print_r($array);
 
-$create_order_link = $host.'/pass-sign/#/create?'.$sign_reduce.'sign='.$sign;
+$create_order_link = $host.'/pass-order/#/create?'.$sign_reduce.'sign='.$sign;
 echo "创建订单链接------>".$create_order_link;
 
 
